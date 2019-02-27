@@ -1,0 +1,23 @@
+package ${entity.entityPackage};
+
+import com.bianbian.base.BaseEntity;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+/**
+ * ${entity.description} 业务数据
+ * @author ${entity.author}
+ */
+@Data
+@Entity
+@Table(name = "${entity.tableName}")
+@ApiModel(value = "${entity.description}")
+public class ${entity.className} extends BaseEntity {
+
+    private static final long serialVersionUID = 1L;
+
+}

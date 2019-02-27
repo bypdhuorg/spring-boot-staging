@@ -1,0 +1,25 @@
+package ${entity.servicePackage};
+
+import com.bianbian.base.BaseService;
+import com.bianbian.bean.vo.SearchTimeVo;
+import ${entity.entityPackage}.${entity.className};
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+import java.util.List;
+
+/**
+ * ${entity.description}接口
+ * @author ${entity.author}
+ */
+public interface ${entity.className}Service extends BaseService<${entity.className},${entity.primaryKeyType}> {
+
+    /**
+     * 多条件分页获取(${entity.description})
+     * @param ${entity.classNameLowerCase}
+     * @param searchVo
+     * @param pageable
+     * @return
+     */
+    Page<${entity.className}> findByCondition(${entity.className} ${entity.classNameLowerCase}, SearchTimeVo searchVo, Pageable pageable);
+}

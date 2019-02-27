@@ -1,4 +1,4 @@
-package com.bianbian.controller;
+package ${entity.controllerPackage};
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,13 +17,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 /**
- * @author bianbian
- * @date 2018/12/29
+ * @author ${entity.author}
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @ActiveProfiles("dev")
-public class HelloControllerTest {
+public class ${entity.className}ControllerTest{
 
     @Autowired
     private WebApplicationContext wac;
@@ -38,10 +37,11 @@ public class HelloControllerTest {
         session = new MockHttpSession();
     }
 
+
     @Test
     public void create() throws Exception {
         String postStr = "{\n\t\"name\":\"this is name\",\n\t\"remark\":\"this is remark\",\n\t\"bu_id\":\"this is buid\",\n\t\"status\":true,\n\t\"content\":\"this is content\"\n}";
-        mvc.perform(MockMvcRequestBuilders.post("/v1/hello")
+        mvc.perform(MockMvcRequestBuilders.post("/${entity.classNameLowerCase}")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(postStr)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -51,8 +51,12 @@ public class HelloControllerTest {
     }
 
     @Test
-    public void list() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.get("/v1/hello")
+    public void page() throws Exception {
+
+        String pageinfo="page=1&pageSize=10&sort=id&order=desc";
+        String pageTimeinfo="&startDate=1519699822000&endDate=1551235822000";
+        String ${entity.classNameLowerCase}info="&departmentId=departmentId&userId=";
+        mvc.perform(MockMvcRequestBuilders.get("/${entity.classNameLowerCase}/getByPage?" + pageinfo+pageTimeinfo+${entity.classNameLowerCase}info)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
@@ -62,8 +66,8 @@ public class HelloControllerTest {
 
     @Test
     public void get() throws Exception {
-        Long id = 1L;
-        mvc.perform(MockMvcRequestBuilders.get("/v1/hello/" + id)
+        String id = "";
+        mvc.perform(MockMvcRequestBuilders.get("/${entity.classNameLowerCase}/" + id)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
@@ -75,9 +79,9 @@ public class HelloControllerTest {
     @Test
     public void update() throws Exception {
 
-        Long id = 1L;
+        String id = "";
         String str = "{\n\t\"name\":\"this is name updated\",\n\t\"remark\":\"this is remark updated\",\n\t\"bu_id\":\"this is buid updated\",\n\t\"status\":true,\n\t\"content\":\"this is content updated\"\n}";
-        mvc.perform(MockMvcRequestBuilders.put("/v1/hello/" + id)
+        mvc.perform(MockMvcRequestBuilders.put("/${entity.classNameLowerCase}/" + id)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .content(str)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -88,13 +92,14 @@ public class HelloControllerTest {
 
     @Test
     public void delete() throws Exception {
-        Long id = 1L;
-        mvc.perform(MockMvcRequestBuilders.get("/v1/hello/" + id)
+        String id = "";
+        mvc.perform(MockMvcRequestBuilders.delete("/${entity.classNameLowerCase}/" + id)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
+
 
 }

@@ -1,0 +1,49 @@
+package ${entity.controllerPackage};
+
+import com.bianbian.base.BaseController;
+import com.bianbian.bean.vo.PageVo;
+import com.bianbian.bean.vo.SearchTimeVo;
+import com.bianbian.common.dto.BaseDTO;
+import com.bianbian.common.utils.ResultUtil;
+import ${entity.entityPackage}.${entity.className};
+import ${entity.servicePackage}.${entity.className}Service;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.transaction.annotation.Transactional;
+
+
+/**
+ * ${entity.description}Controller层
+ * @author ${entity.author}
+ */
+@Slf4j
+@RestController
+@Api(description = "${entity.description}管理接口")
+@RequestMapping("/${entity.classNameLowerCase}")
+@Transactional
+public class ${entity.className}Controller extends BaseController<${entity.className}, ${entity.primaryKeyType}>{
+
+    @Autowired
+    private ${entity.className}Service ${entity.classNameLowerCase}Service;
+
+    @Override
+    public ${entity.className}Service getService() {
+        return ${entity.classNameLowerCase}Service;
+    }
+
+    @RequestMapping(value = "/getByPage",method = RequestMethod.GET)
+    @ResponseBody
+    @ApiOperation(value = "分页获取")
+    public BaseDTO<Page<${entity.className}>> getByPage(
+            @ModelAttribute ${entity.className} ${entity.classNameLowerCase},
+            @ModelAttribute SearchTimeVo searchVo,
+            @ModelAttribute PageVo page){
+
+        Page<${entity.className}> data = getService().findByCondition(${entity.classNameLowerCase},searchVo,initPage(page));
+        return new ResultUtil<Page<${entity.className}>>().setData(data);
+    }
+}
