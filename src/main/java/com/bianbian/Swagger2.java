@@ -32,9 +32,9 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Certificate Management")
-                .description("You can manage certificate here.")
-                .termsOfServiceUrl("http://bianbian.com")
+                .title("swagger2 管理页面")
+                .description("You can manage here.")
+                .termsOfServiceUrl("http://127.0.0.1:8080/swagger-ui.html")
                 .contact(new Contact("bianbian","","bian@test.com"))
                 .version("1.0")
                 .build();

@@ -41,3 +41,7 @@ spring-boot实践实战项目，将平时项目开发用的基本内容整合，
 - exception
 - httpclient.conf
 - validator
+
+
+## 使用
+swagger页面地址： http://127.0.0.1:8080/swagger-ui.html
