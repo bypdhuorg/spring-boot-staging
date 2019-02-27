@@ -8,21 +8,21 @@ public enum ResponseStatusEnum {
     /**
      * 三个参数，分别为数字标示、英文含义、中文显示
      */
-    SUCCESS(1, "success", "成功"),
-    FAILURE(0, "failure", "失败");
+    SUCCESS(true, "success", "成功"),
+    FAILURE(false, "failure", "失败");
 
-    private Integer code;
+    private boolean success;
     private String text;
     private String 中文;
 
-    ResponseStatusEnum(Integer code, String name, String 中文) {
-        this.code = code;
+    ResponseStatusEnum(boolean success, String name, String 中文) {
+        this.success = success;
         this.text = name;
         this.中文 = 中文;
     }
 
-    public Integer getCode() {
-        return this.code;
+    public boolean getSuccess() {
+        return this.success;
     }
 
     public String getText() {
