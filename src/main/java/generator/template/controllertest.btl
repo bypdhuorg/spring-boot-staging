@@ -1,5 +1,8 @@
 package ${entity.controllerPackage};
 
+import cn.hutool.json.JSONObject;
+import cn.hutool.json.JSONUtil;
+import ${entity.entityPackage}.${entity.className};
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,10 +43,12 @@ public class ${entity.className}ControllerTest{
 
     @Test
     public void create() throws Exception {
-        String postStr = "{\n\t\"name\":\"this is name\",\n\t\"remark\":\"this is remark\",\n\t\"bu_id\":\"this is buid\",\n\t\"status\":true,\n\t\"content\":\"this is content\"\n}";
+        ${entity.className} entity= new ${entity.className}();
+        //TODO set
+        JSONObject json = JSONUtil.parseObj(entity);
         mvc.perform(MockMvcRequestBuilders.post("/${entity.classNameLowerCase}")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(postStr)
+                .content(json.toString())
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
                 .andDo(MockMvcResultHandlers.print())
@@ -80,10 +85,12 @@ public class ${entity.className}ControllerTest{
     public void update() throws Exception {
 
         String id = "";
-        String str = "{\n\t\"name\":\"this is name updated\",\n\t\"remark\":\"this is remark updated\",\n\t\"bu_id\":\"this is buid updated\",\n\t\"status\":true,\n\t\"content\":\"this is content updated\"\n}";
+        ${entity.className} entity= new ${entity.className}();
+        //TODO set
+        JSONObject json = JSONUtil.parseObj(entity);
         mvc.perform(MockMvcRequestBuilders.put("/${entity.classNameLowerCase}/" + id)
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(str)
+                .content(json.toString())
                 .accept(MediaType.APPLICATION_JSON_UTF8)
         )
                 .andDo(MockMvcResultHandlers.print())

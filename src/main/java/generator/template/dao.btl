@@ -1,6 +1,6 @@
 package ${entity.daoPackage};
 
-import com.bianbian.base.BaseDao;
+import ${entity.basePackage}.base.BaseDao;
 import ${entity.entityPackage}.${entity.className};
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.bianbian.generator.bean;
+package generator.bean;
 
 import lombok.Data;
 
@@ -7,6 +7,8 @@ import lombok.Data;
  */
 @Data
 public class EntityOfEntity {
+
+    private String basePackage;
 
     private String entityPackage;
 

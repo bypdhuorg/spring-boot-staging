@@ -1,6 +1,6 @@
 package ${entity.entityPackage};
 
-import com.bianbian.base.BaseEntity;
+import ${entity.basePackage}.base.BaseEntity;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;

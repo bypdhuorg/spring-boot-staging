@@ -1,10 +1,10 @@
 package ${entity.controllerPackage};
 
-import com.bianbian.base.BaseController;
-import com.bianbian.bean.vo.PageVo;
-import com.bianbian.bean.vo.SearchTimeVo;
-import com.bianbian.common.dto.BaseDTO;
-import com.bianbian.common.utils.ResultUtil;
+import ${entity.basePackage}.base.BaseController;
+import ${entity.basePackage}.bean.vo.PageVo;
+import ${entity.basePackage}.bean.vo.SearchTimeVo;
+import ${entity.basePackage}.common.dto.BaseDTO;
+import ${entity.basePackage}.common.utils.ResultUtil;
 import ${entity.entityPackage}.${entity.className};
 import ${entity.servicePackage}.${entity.className}Service;
 import io.swagger.annotations.Api;
